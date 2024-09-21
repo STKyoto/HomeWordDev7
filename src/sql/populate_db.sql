@@ -10,7 +10,6 @@ INSERT INTO worker (NAME, BIRTHDAY, LEVEL, SALARY) VALUES
 ('Liam Wilson', '1997-04-22', 'Trainee', 850),
 ('Olivia Taylor', '1994-02-18', 'Middle', 4800);
 
--- Вставка даних у таблицю client
 INSERT INTO client (NAME) VALUES
 ('Acme Corp.'),
 ('Tech Innovators'),
@@ -18,7 +17,6 @@ INSERT INTO client (NAME) VALUES
 ('FutureTech'),
 ('Creative Minds');
 
--- Вставка даних у таблицю project
 INSERT INTO project (CLIENT_ID, START_DATE, FINISH_DATE) VALUES
 (1, '2022-01-01', '2023-01-01'),
 (2, '2022-02-01', '2022-07-01'),
@@ -31,7 +29,6 @@ INSERT INTO project (CLIENT_ID, START_DATE, FINISH_DATE) VALUES
 (4, '2023-07-01', '2023-12-01'),
 (5, '2022-09-01', '2023-09-01');
 
--- Вставка даних у таблицю project_worker
 INSERT INTO project_worker (PROJECT_ID, WORKER_ID) VALUES
 (1, 1), (1, 2), (1, 3),
 (2, 4), (2, 5),

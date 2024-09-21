@@ -5,10 +5,7 @@ import org.example.Dto.*;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,17 +58,21 @@ public class DatabaseQueryService {
 
     public static <T> List<T> executeQuery(String sqlFilePath, ResultSetMapper<T> mapper) {
         List<T> result = new ArrayList<>();
+        String sql;
+        try {
+            sql = new String(Files.readAllBytes(Paths.get(sqlFilePath)));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         try (Connection connection = Database.getConnection();
-             Statement statement = connection.createStatement()) {
-
-            String sql = new String(Files.readAllBytes(Paths.get(sqlFilePath)));
-            try (ResultSet resultSet = statement.executeQuery(sql)) {
+               PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            try (ResultSet resultSet = preparedStatement.executeQuery()) {
                 while (resultSet.next()) {
                     T item = mapper.map(resultSet);
                     result.add(item);
                 }
             }
-        } catch (IOException | SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
         return result;
