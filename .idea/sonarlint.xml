@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SonarLintProjectSettings">
+    <option name="moduleMapping">
+      <map>
+        <entry key="HomeWorkDev8.main" value="HomeWorkDev6.main" />
+        <entry key="HomeWorkDev8.sql" value="HomeWorkDev6.sql" />
+        <entry key="HomeWorkDev8.test" value="HomeWorkDev6.test" />
+      </map>
+    </option>
+  </component>
+</project>
